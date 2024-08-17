@@ -4,3 +4,11 @@
   margin: 0;
 }
 
+body {
+  height: 100vh;
+  background-color:  #232B2B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

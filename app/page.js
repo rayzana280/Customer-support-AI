@@ -51,20 +51,65 @@ export default function Home() {
     })
   }
   return (
-   <Box>
-    <Stack>
+   <Box 
+    sx={{
+      width: '600px', 
+      height: '700px', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      border: '2px solid #0C0404', 
+      borderRadius: '8px', 
+      padding: '16px',
+      bgcolor: '#36454F',
+    }}
+    >
+    <Stack
+      sx={{ 
+        flex: 1, 
+        overflowY: 'auto', 
+        marginBottom: '16px',
+        paddingRight: '16px',
+      }}
+    >
       <Stack>
         {messages.map((message,index)=>(
-          <Box key={index}>
-            <Box>
+          <Box key={index}
+            sx={{ 
+              padding: '8px', 
+              borderRadius: '4px', 
+              marginBottom: '8px',
+              color: 'RGB 73, 79, 85',
+              backgroundColor: message.role === 'user' ? '#e3f2fd' : '#f1f8e9',
+              display: 'flex',
+              justifyContent: message.role === 'user' ? 'flex-end' : 'flex-start',
+            }}
+          >
+            <Box
+              sx={{
+                maxWidth: '70%', 
+                textAlign: 'left', 
+                wordWrap: 'break-word',
+              }}
+              >
               {message.content}
             </Box>
           </Box>
         ))}
       </Stack>
-      <Stack>
-        <TextField value={message} onChange={(e)=> setMessage(e.target.value)}/>
-        <Button variant='contained' onClick={sendMessage}>Send</Button>
+      <Stack direction="row" spacing={2} alignItems="center" sx={{ mt: 'auto' }}>
+        <TextField 
+          value={message} 
+          onChange={(e)=> setMessage(e.target.value)} 
+          sx={{width: '100%', borderRadius: '4px', backgroundColor: '#fff'}}/>
+        <Button 
+          variant='contained' 
+          onClick={sendMessage}
+          sx={{ 
+            backgroundColor: '#1976d2',
+            '&:hover': { backgroundColor: '#1565c0' }
+          }}>
+            Send
+        </Button>
       </Stack>
     </Stack>
    </Box>
